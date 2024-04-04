@@ -3,7 +3,9 @@ const MenuSvg = () => {
         <svg
             width={20}
             height={20}
-            className='bg-white'
+            style={{
+                fill: 'white',
+            }}
             focusable='false'
             aria-hidden='true'
             viewBox='0 0 24 24'

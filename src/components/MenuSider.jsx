@@ -1,69 +1,80 @@
 import { LogoutOutlined } from '@ant-design/icons';
-import { Col, Menu, Row, Layout } from 'antd';
+import { Badge, Col, Layout, Menu, Row, Space, Typography } from 'antd';
 import SubMenu from 'antd/es/menu/SubMenu';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
-import DashboardSvg from '../assets/DashboardSvg';
-import OrderSvg from '../assets/OrderSvg';
-import PageSvg from '../assets/PageSvg';
+import { useLocation, useNavigate } from 'react-router-dom';
+import DashboardSvg from '../assets/DashboardIcon';
+import LogoSvg from '../assets/LogoIcon';
+import OrderSvg from '../assets/OrderIcon';
+import PageSvg from '../assets/PageIcon';
 const { Sider } = Layout;
 
-const MenuSider = () => {
+const MenuSider = ({ ...other }) => {
     const { t } = useTranslation();
 
-    const location = useLocation();
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
+
+    const [activeItem, setActiveItem] = useState(
+        pathname ? pathname : 'dashboard'
+    );
+
+    useEffect(() => {
+        setActiveItem(pathname);
+    }, [pathname]);
 
     const items = [
         {
-            key: '6',
+            key: '1',
             icon: <DashboardSvg />,
             label: t('SIDE_BAR.DASHBOARD'),
             children: [
                 {
-                    key: '1',
+                    key: 'analytic',
                     label: 'Analytics',
-                    path: '/dashboard',
                 },
             ],
         },
         {
-            key: '2',
+            key: 'page',
             icon: <PageSvg />,
             label: t('SIDE_BAR.PAGE'),
             children: [
                 {
-                    key: '3',
+                    key: 'profile',
                     label: 'Profile',
-                    path: '/profile',
                 },
                 {
-                    key: '4',
+                    key: 'pricing',
                     label: 'Pricing',
-                    path: '/profile',
                 },
             ],
         },
         {
-            key: '5',
+            key: 'order',
             icon: <OrderSvg className='w-3 h-3' />,
             label: t('SIDE_BAR.ORDERS'),
-            path: '/order',
         },
     ];
     return (
         <>
-            <Sider className='h-screen' trigger={null}>
-                <Row
-                    className='h-screen flex-col bg-[#233044]'
-                    justify='space-between'>
-                    <Col>
-                        <div>
-                            <img src='/image/logo.png' className='w-full' />
-                        </div>
+            <Sider className='h-full w-10' trigger={null} {...other}>
+                <Row className='h-screen bg-[#233044] justify-center'>
+                    <Col className='self-start'>
+                        <Space className='p-5'>
+                            <LogoSvg />
+                            <Badge text='pro' color='white'>
+                                <Typography.Text className='text-[17px]'>
+                                    Mira
+                                </Typography.Text>
+                            </Badge>
+                        </Space>
                         <Menu
                             className='bg-[#233044]'
-                            defaultSelectedKeys={['1']}
-                            defaultOpenKeys={['1']}
+                            // defaultSelectedKeys={activeItem}
+                            // defaultOpenKeys={activeItem}
+                            selectedKeys={activeItem}
                             mode='inline'
                             theme='dark'>
                             {items.map((menuItem) =>
@@ -75,17 +86,24 @@ const MenuSider = () => {
                                         title={menuItem.label}>
                                         {menuItem.children.map((childItem) => (
                                             <Menu.Item
-                                                className='
-                                                w-full'
+                                                onClick={() => {
+                                                    navigate(childItem.key),
+                                                        setActiveItem(
+                                                            childItem.key
+                                                        );
+                                                }}
+                                                className={`pr-5 `}
                                                 key={childItem.key}>
-                                                <Link to={childItem.path}>
-                                                    {childItem.label}
-                                                </Link>
+                                                {childItem.label}
                                             </Menu.Item>
                                         ))}
                                     </SubMenu>
                                 ) : (
                                     <Menu.Item
+                                        onClick={() => {
+                                            navigate(items.key),
+                                                setActiveItem(items.key);
+                                        }}
                                         key={menuItem.key}
                                         icon={menuItem.icon}>
                                         {menuItem.label}
@@ -94,7 +112,7 @@ const MenuSider = () => {
                             )}
                         </Menu>
                     </Col>
-                    <Col>
+                    <Col className='self-end'>
                         <Menu
                             theme='dark'
                             className='bg-[#233044]'
