@@ -59,7 +59,7 @@ const MenuSider = ({ ...other }) => {
     ];
     return (
         <>
-            <Sider className='h-full w-10' trigger={null} {...other}>
+            <Sider className='h-100lvh w-10' trigger={null} {...other}>
                 <Row className='h-screen bg-[#233044] justify-center'>
                     <Col className='self-start'>
                         <Space className='p-5'>
@@ -101,8 +101,9 @@ const MenuSider = ({ ...other }) => {
                                 ) : (
                                     <Menu.Item
                                         onClick={() => {
-                                            navigate(items.key),
-                                                setActiveItem(items.key);
+                                            navigate(menuItem.key),
+                                                setActiveItem(menuItem.key);
+                                            
                                         }}
                                         key={menuItem.key}
                                         icon={menuItem.icon}>

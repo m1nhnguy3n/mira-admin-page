@@ -1,6 +1,6 @@
 import Analytics from '../pages/Dashboard/Analytics';
+import Order from '../pages/Order/Order';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
-import Pricing from '../pages/Pricing/Pricing';
 
 const PrivateRoute = [
     {
@@ -12,9 +12,9 @@ const PrivateRoute = [
                 element: <Analytics />,
             },
             {
-                path: 'pricing',
-                element: <Pricing />,
-            },
+                path: "order",
+                element: <Order />,
+            }
         ],
     },
 ];

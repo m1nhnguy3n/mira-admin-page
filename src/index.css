@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ant-table-cell {
+    background-color: rgb(30, 48, 67) !important;
+}
+.ant-table-title {
+    background-color: rgb(30, 48, 67) !important;
+}
+.whiteTextTable th,
+.whiteTextTable td {
+    color: white !important;
+}
