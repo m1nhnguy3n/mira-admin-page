@@ -23,7 +23,7 @@ const ProtectedRoute = () => {
     // );
 
     return (
-        <Layout className=' font-sans h-full w-full bg-[#1B2635]'>
+        <Layout className='font-sans h-full w-full bg-[#1B2635]'>
             <Drawer
                 placement='left'
                 onClose={onClose}
@@ -36,13 +36,13 @@ const ProtectedRoute = () => {
             </Drawer>
             <MenuSider id='sider_container' />
 
-            <Row className='flex flex-col w-full'>
-                <Col>
+            <Row className='w-full'>
+                <Col span={24} >
                     <Header
                         className='
-                            h-[100px] bg-inherit'>
-                        <Row justify='space-between'>
-                            <Col span={8}>
+                            h-[100px] bg-inherit flex w-full'>
+                        <Row justify='space-between' className='w-full'>
+                            <Col span={8} className='flex items-center'>
                                 <Input
                                     className='search-input bg-inherit w-40 text-white'
                                     placeholder='Search topics'
@@ -55,7 +55,7 @@ const ProtectedRoute = () => {
                                     icon={<MenuSvg />}
                                 />
                             </Col>
-                            <Col span={8}>
+                            <Col span={8} className='flex justify-end items-center'>
                                 <Switch
                                     checkedChildren='EN'
                                     unCheckedChildren='VI'
@@ -76,7 +76,7 @@ const ProtectedRoute = () => {
                         </Row>
                     </Header>
                 </Col>
-                <Col className='p-5'>
+                <Col span={24} className='p-5'>
                     <Content>
                         <Outlet />
                     </Content>

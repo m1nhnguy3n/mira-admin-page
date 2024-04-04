@@ -3,5 +3,16 @@
         "DASHBOARD": "Bảng điều khiển",
         "ORDERS": "Đơn hàng",
         "PAGE": "Trang"
-    }
+    },
+    "ORDER": {
+        "ORDER": "Đơn hàng",
+        "ORDER1": "Tạo Đơn hàng",
+        "ORDERID": "Mã Đơn Hàng",
+        "PRODUCT": "Sản phẩm",
+        "DATE": "Ngày",
+        "TOTAL": "Tổng",
+        "STATUS": "Trạng Thái",
+        "PAYMENT_METHOD": "Phương thức Thanh Toán",
+        "ACTIONS": "Hành Động"
+}
 }

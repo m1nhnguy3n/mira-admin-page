@@ -3,5 +3,17 @@
         "DASHBOARD": "Dashboard",
         "ORDERS": "Orders",
         "PAGE": "Pages"
+    },
+    "ORDER":{
+        "ORDER": "Orders",
+        "ORDER1": "New Order",
+        "ORDERID": "Order ID",
+        "PRODUCT": "Product",
+        "DATE": "Date",
+        "TOTAL": "Total",
+        "STATUS": "Status",
+        "PAYMENT_METHOD": "Payment Method",
+        "ACTIONS": "Actions"
     }
+    
 }
