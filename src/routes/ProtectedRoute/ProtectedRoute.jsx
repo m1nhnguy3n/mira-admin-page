@@ -1,41 +1,61 @@
-import { Col, Layout, Row, Switch, Typography } from 'antd';
+import { Button, Col, Drawer, Layout, Row, Switch, Input } from 'antd';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 import MenuSider from '../../components/MenuSider';
+import MenuSvg from '../../assets/MenuIcon';
 import './ProtectedRoute.scss';
+import SearchIcon from '../../assets/SearchIcon';
 const { Header, Content } = Layout;
 
 const ProtectedRoute = () => {
     const { i18n } = useTranslation();
+    const [open, setOpen] = useState(false);
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
+
+    const onClose = () => {
+        setOpen(false);
+    };
     //     pathname ? pathname : 'dashboard'
     // );
 
     return (
-        <Layout className=' font-sans h-screen w-full bg-[#1B2635]'>
-            {/* <Drawer
+        <Layout className=' font-sans h-full w-full bg-[#1B2635]'>
+            <Drawer
                 placement='left'
-                open={true}
+                onClose={onClose}
                 closable={false}
+                getContainer={false}
                 width={200}
-                className='h-screen'></Drawer> */}
-            <MenuSider />
+                open={open}
+                className='h-full'>
+                <MenuSider />
+            </Drawer>
+            <MenuSider id='sider_container' />
+
             <Row className='flex flex-col w-full'>
                 <Col>
                     <Header
                         className='
-                            h-[100px] w-full bg-inherit'>
-                        <Row className='flex flex-row' justify='space-between'>
-                            <Col>
-                                <Typography.Title
-                                    level={1}
-                                    className=' font-extrabold'>
-                                    Hello Abbas
-                                </Typography.Title>
-                                <Typography>
-                                    Lets navigate the realms of data control
-                                </Typography>
+                            h-[100px] bg-inherit'>
+                        <Row justify='space-between'>
+                            <Col span={8}>
+                                <Input
+                                    className='search-input bg-inherit w-40 text-white'
+                                    placeholder='Search topics'
+                                    prefix={<SearchIcon />}
+                                />
+                                <Button
+                                    id='show-sidebar-btn'
+                                    className='bg-inherit'
+                                    onClick={showDrawer}
+                                    icon={<MenuSvg />}
+                                />
                             </Col>
-                            <Col>
+                            <Col span={8}>
                                 <Switch
                                     checkedChildren='EN'
                                     unCheckedChildren='VI'

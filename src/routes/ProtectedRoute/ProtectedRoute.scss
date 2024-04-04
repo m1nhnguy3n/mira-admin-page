@@ -1,3 +1,24 @@
-h1 {
-    font-size: xx-large;
+.sider_container {
+}
+#show-sidebar-btn {
+    display: none;
+}
+.search-input {
+    .ant-input[placeholder]::placeholder {
+        color: white;
+        opacity: 0.4;
+        padding-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    #sider_container {
+        display: none;
+    }
+    #show-sidebar-btn {
+        display: inline-block;
+    }
+    .search-input {
+        display: none;
+    }
 }

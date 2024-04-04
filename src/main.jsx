@@ -11,16 +11,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ConfigProvider
             theme={{
                 components: {
-                    Typography: {
-                        colorText: '#EEEEEE',
-                        colorTextHeading: '#EEEEEE',
-                        colorTextDescription: '#EEEEEE',
-                    },
                     Layout: {
                         siderBg: '#233044',
                     },
                     Menu: {
                         darkSubMenuItemBg: '#233044',
+                    },
+                    Drawer: {
+                        paddingLG: '0',
                     },
                 },
             }}>
