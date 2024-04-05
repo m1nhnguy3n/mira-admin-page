@@ -5,6 +5,7 @@ const PublicRoute = [
         path: 'login',
         element: <Login />,
     },
+    
 ];
 
 export default PublicRoute;

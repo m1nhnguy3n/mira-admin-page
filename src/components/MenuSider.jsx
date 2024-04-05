@@ -14,41 +14,41 @@ const MenuSider = () => {
     const location = useLocation();
 
     const items = [
-        {
-            key: '6',
-            icon: <DashboardSvg />,
-            label: t('SIDE_BAR.DASHBOARD'),
-            children: [
-                {
-                    key: '1',
-                    label: 'Analytics',
-                    path: '/dashboard',
-                },
-            ],
-        },
-        {
-            key: '2',
-            icon: <PageSvg />,
-            label: t('SIDE_BAR.PAGE'),
-            children: [
-                {
-                    key: '3',
-                    label: 'Profile',
-                    path: '/profile',
-                },
-                {
-                    key: '4',
-                    label: 'Pricing',
-                    path: '/profile',
-                },
-            ],
-        },
-        {
-            key: '5',
-            icon: <OrderSvg className='w-3 h-3' />,
-            label: t('SIDE_BAR.ORDERS'),
-            path: '/order',
-        },
+      {
+        key: "6",
+        icon: <DashboardSvg />,
+        label: t("SIDE_BAR.DASHBOARD"),
+        children: [
+          {
+            key: "1",
+            label: "Analytics",
+            path: "/dashboard",
+          },
+        ],
+      },
+      {
+        key: "2",
+        icon: <PageSvg />,
+        label: t("SIDE_BAR.PAGE"),
+        children: [
+          {
+            key: "3",
+            label: "Profile",
+            path: "/profile",
+          },
+          {
+            key: "4",
+            label: "Pricing",
+            path: "/Pricing",
+          },
+        ],
+      },
+      {
+        key: "5",
+        icon: <OrderSvg className="w-3 h-3" />,
+        label: t("SIDE_BAR.ORDERS"),
+        path: "/order",
+      },
     ];
     return (
         <>
