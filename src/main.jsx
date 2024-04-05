@@ -3,11 +3,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './config/i18n';
+import AuthProvider from './context/AuthContext.jsx';;
 import './index.css';
 import Routes from './router.jsx';
 
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
+    
+        <AuthProvider>
         <ConfigProvider
             theme={{
                 components: {
@@ -26,5 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Routes />
             </I18nextProvider>
         </ConfigProvider>
-    </React.StrictMode>
+        </AuthProvider>
+        
+    
 );

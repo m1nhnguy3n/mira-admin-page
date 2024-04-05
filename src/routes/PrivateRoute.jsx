@@ -19,7 +19,7 @@ const PrivateRoute = [
       {
         path: "pricing",
         element: <Pricing />,
-      },
+      }
     ],
   },
 ];
