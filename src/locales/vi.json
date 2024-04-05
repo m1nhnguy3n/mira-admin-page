@@ -1,8 +1,14 @@
 {
     "SIDE_BAR": {
         "DASHBOARD": "Bảng điều khiển",
+        "ANALYTIC": "Phân tích",
         "ORDERS": "Đơn hàng",
-        "PAGE": "Trang"
+        "PAGE": "Trang",
+        "PROFILE": "Hồ sơ",
+        "PRICING": "Định giá",
+        "LOG_OUT": "Đăng xuất",
+        "UX_DESIGNER": "nhà thiết kế UX",
+        "SEARCH_CATEGORY": "Tìm kiếm danh mục..."
     },
     "ORDER": {
         "ORDER": "Đơn hàng",

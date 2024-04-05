@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Row, Col, Typography, Card, Breadcrumb } from "antd";
 const { Text } = Typography;
 import { useTranslation } from "react-i18next";

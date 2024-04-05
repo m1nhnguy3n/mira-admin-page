@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Col } from "antd";

@@ -1,6 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Divider, Table, Typography, Row, Button, Space, Tag, Grid, Breadcrumb } from 'antd';
-import { PlusOutlined, EyeFilled, DownSquareFilled } from '@ant-design/icons';
+import { DownSquareFilled, EyeFilled, PlusOutlined } from '@ant-design/icons';
+import {
+    Breadcrumb,
+    Button,
+    Col,
+    Divider,
+    Row,
+    Space,
+    Table,
+    Tag,
+    Typography,
+} from 'antd';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,7 +23,6 @@ const data = [
         payment: 'Visa',
         status: 'Shipped',
         product: 'Salt & Pepper Grinder	',
-
     },
     {
         key: '2',
@@ -51,16 +60,18 @@ const data = [
         status: 'Shipped',
         product: 'Backpack',
     },
-    
 ];
 
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        console.log(
+            `selectedRowKeys: ${selectedRowKeys}`,
+            'selectedRows: ',
+            selectedRows
+        );
     },
 };
 const Order = () => {
-
     const { t } = useTranslation();
     const navigate = useNavigate();
 
@@ -106,7 +117,14 @@ const Order = () => {
                         break;
                 }
                 return (
-                    <Tag color={color} key={status} style={{ borderStyle: 'solid', borderColor: 'dark' + color, borderWidth: '3px' }}>
+                    <Tag
+                        color={color}
+                        key={status}
+                        style={{
+                            borderStyle: 'solid',
+                            borderColor: 'dark' + color,
+                            borderWidth: '3px',
+                        }}>
                         {status.toUpperCase()}
                     </Tag>
                 );
@@ -122,52 +140,75 @@ const Order = () => {
             dataIndex: 'actions',
             responsive: ['sm'],
             render: () => (
-                <Space size="middle">
-                    <Button type="text" icon={<EyeFilled style={{ color: 'white' }} />} />
-                    <Button type="text" icon={<DownSquareFilled style={{ color: 'white' }} />} />
+                <Space size='middle'>
+                    <Button
+                        type='text'
+                        icon={<EyeFilled style={{ color: 'white' }} />}
+                    />
+                    <Button
+                        type='text'
+                        icon={<DownSquareFilled style={{ color: 'white' }} />}
+                    />
                 </Space>
             ),
         },
     ];
 
-
-
     return (
-        <div className='h-screen md:h-full'>
-            <Row justify="space-between" align="middle" className='h-max'>
+        <div className='h-screen lg:h-full'>
+            <Row justify='space-between' align='middle' className='h-max'>
                 <Col span={24} md={12}>
-                    <Typography.Title level={2} style={{ color: 'white' }}>{t('ORDER.ORDER')}</Typography.Title>
+                    <Typography.Title level={2} style={{ color: 'white' }}>
+                        {t('ORDER.ORDER')}
+                    </Typography.Title>
                 </Col>
 
                 <Col span={24} md={12} style={{ textAlign: 'right' }}>
-                    <Button type="primary" icon={<PlusOutlined />}>{t('ORDER.ORDER1')}</Button>
+                    <Button type='primary' icon={<PlusOutlined />}>
+                        {t('ORDER.ORDER1')}
+                    </Button>
                 </Col>
             </Row>
-            <Breadcrumb className="my-4 text-[#376FD0] cursor-pointer">
-            <Breadcrumb.Item onClick={() => {
-                navigate("/analytic");
-              }}
-              >{t('SIDE_BAR.DASHBOARD')}</Breadcrumb.Item>
-            <Breadcrumb.Item onClick={() => {
-                navigate("/");
-              }}
-              >{t('SIDE_BAR.PAGE')}</Breadcrumb.Item>
-            <Breadcrumb.Item className="text-white" onClick={() => {
-                navigate("/order");
-              }}>
-            {t('SIDE_BAR.ORDERS')}
-            </Breadcrumb.Item>
-          </Breadcrumb>
-            <Divider  className='bg-white'/>
+            <Breadcrumb className='my-4 text-[#376FD0] cursor-pointer'>
+                <Breadcrumb.Item
+                    onClick={() => {
+                        navigate('/analytic');
+                    }}>
+                    {t('SIDE_BAR.DASHBOARD')}
+                </Breadcrumb.Item>
+                <Breadcrumb.Item
+                    onClick={() => {
+                        navigate('/');
+                    }}>
+                    {t('SIDE_BAR.PAGE')}
+                </Breadcrumb.Item>
+                <Breadcrumb.Item
+                    className='text-white'
+                    onClick={() => {
+                        navigate('/order');
+                    }}>
+                    {t('SIDE_BAR.ORDERS')}
+                </Breadcrumb.Item>
+            </Breadcrumb>
+            <Divider className='bg-white' />
             <Table
                 rowSelection={{
                     type: selectionType,
                     ...rowSelection,
                 }}
-                title={() => <span style={{ fontWeight: 'bold', color: 'white', fontSize: '20px' }}>{t('ORDER.ORDER')}</span>}
+                title={() => (
+                    <span
+                        style={{
+                            fontWeight: 'bold',
+                            color: 'white',
+                            fontSize: '20px',
+                        }}>
+                        {t('ORDER.ORDER')}
+                    </span>
+                )}
                 columns={baseColumns}
                 dataSource={data}
-                className="whiteTextTable"
+                className='whiteTextTable'
             />
         </div>
     );

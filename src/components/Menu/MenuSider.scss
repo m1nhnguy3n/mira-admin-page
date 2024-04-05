@@ -1,0 +1,13 @@
+.ant-menu-dark .ant-menu-item-selected {
+    background-color: black;
+    margin: 0;
+    border-radius: 0%;
+}
+.ant-space-gap-row-small {
+    row-gap: 0px;
+}
+.ant-badge.ant-badge .ant-badge-color-green:not(.ant-badge-count) {
+    color: #52c41a;
+    width: 10px;
+    height: 10px;
+}
