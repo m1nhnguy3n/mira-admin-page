@@ -22,6 +22,7 @@ const ProtectedRoute = () => {
   //     pathname ? pathname : 'dashboard'
   // );
 
+
   return (
     <Layout className="font-sans h-full w-full bg-[#1B2635]">
       <Drawer

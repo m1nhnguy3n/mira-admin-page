@@ -3,6 +3,7 @@ import NotFound from './pages/Errors/NotFound';
 import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
 
+
 const Routes = () => {
     const router = createBrowserRouter([
         {
@@ -10,10 +11,13 @@ const Routes = () => {
             element: <Outlet />,
             errorElement: <NotFound />,
             children: [...PublicRoute, ...PrivateRoute],
-        },
+            
+        }
+        
     ]);
 
-    return <RouterProvider router={router} />;
+    return <RouterProvider router={router} />;  
+    
 };
 
 export default Routes;
