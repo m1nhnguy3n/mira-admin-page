@@ -3,7 +3,7 @@ import React from 'react';
 const Analytics = () => {
     return (
         <div>
-            <Typography>Dashboard</Typography>
+            <Typography className='text-white'>Dashboard</Typography>
         </div>
     );
 };

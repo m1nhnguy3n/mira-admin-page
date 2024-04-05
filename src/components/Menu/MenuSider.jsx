@@ -1,28 +1,29 @@
-import { LogoutOutlined } from '@ant-design/icons';
-import { Badge, Col, Layout, Menu, Row, Space, Typography } from 'antd';
+import { Avatar, Badge, Col, Layout, Menu, Row, Space, Typography } from 'antd';
 import SubMenu from 'antd/es/menu/SubMenu';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-import DashboardSvg from '../assets/DashboardIcon';
-import LogoSvg from '../assets/LogoIcon';
-import OrderSvg from '../assets/OrderIcon';
-import PageSvg from '../assets/PageIcon';
+import DashboardSvg from '../../assets/DashboardIcon';
+import OrderSvg from '../../assets/OrderIcon';
+import PageSvg from '../../assets/PageIcon';
+import AvatarImg from '../../assets/avatar-1.jpg';
+import Logo from '../../assets/logo.png';
+import './MenuSider.scss';
 const { Sider } = Layout;
+const { Text } = Typography;
 
 const MenuSider = ({ ...other }) => {
     const { t } = useTranslation();
 
     const { pathname } = useLocation();
+    const key = pathname.split('/')[1];
     const navigate = useNavigate();
 
-    const [activeItem, setActiveItem] = useState(
-        pathname ? pathname : 'dashboard'
-    );
+    const [activeItem, setActiveItem] = useState(key ? key : '');
 
     useEffect(() => {
-        setActiveItem(pathname);
-    }, [pathname]);
+        setActiveItem(key);
+    }, [key]);
 
     const items = [
         {
@@ -31,7 +32,7 @@ const MenuSider = ({ ...other }) => {
             label: t('SIDE_BAR.DASHBOARD'),
             children: [
                 {
-                    key: 'analytic',
+                    key: '',
                     label: 'Analytics',
                 },
             ],
@@ -43,11 +44,11 @@ const MenuSider = ({ ...other }) => {
             children: [
                 {
                     key: 'profile',
-                    label: 'Profile',
+                    label: t('SIDE_BAR.PROFILE'),
                 },
                 {
                     key: 'pricing',
-                    label: 'Pricing',
+                    label: t('SIDE_BAR.PRICING'),
                 },
             ],
         },
@@ -57,23 +58,17 @@ const MenuSider = ({ ...other }) => {
             label: t('SIDE_BAR.ORDERS'),
         },
     ];
+
     return (
         <>
-            <Sider className='h-100lvh w-10' trigger={null} {...other}>
-                <Row className='h-screen bg-[#233044] justify-center'>
-                    <Col className='self-start'>
+            <Sider className='h-full w-10' trigger={null} {...other}>
+                <Row className='h-screen  bg-[#233044] justify-items-center top-0 bottom-0'>
+                    <Col span={24} className=''>
                         <Space className='p-5'>
-                            <LogoSvg />
-                            <Badge text='pro' color='white'>
-                                <Typography.Text className='text-[17px]'>
-                                    Mira
-                                </Typography.Text>
-                            </Badge>
+                            <img src={Logo} alt='' />
                         </Space>
                         <Menu
-                            className='bg-[#233044]'
-                            // defaultSelectedKeys={activeItem}
-                            // defaultOpenKeys={activeItem}
+                            className='bg-[#233044] '
                             selectedKeys={activeItem}
                             mode='inline'
                             theme='dark'>
@@ -92,7 +87,11 @@ const MenuSider = ({ ...other }) => {
                                                             childItem.key
                                                         );
                                                 }}
-                                                className={`pr-5 `}
+                                                className={`mr-5 ${
+                                                    activeItem === childItem.key
+                                                        ? 'ant-menu-item-selected'
+                                                        : ''
+                                                }`}
                                                 key={childItem.key}>
                                                 {childItem.label}
                                             </Menu.Item>
@@ -103,7 +102,7 @@ const MenuSider = ({ ...other }) => {
                                         onClick={() => {
                                             navigate(menuItem.key),
                                                 setActiveItem(menuItem.key);
-                                            
+                                            console.log(menuItem.key);
                                         }}
                                         key={menuItem.key}
                                         icon={menuItem.icon}>
@@ -113,18 +112,25 @@ const MenuSider = ({ ...other }) => {
                             )}
                         </Menu>
                     </Col>
-                    <Col className='self-end'>
-                        <Menu
-                            theme='dark'
-                            className='bg-[#233044]'
-                            mode='vertical'>
-                            <Menu.Item
-                                key='logout'
-                                danger={true}
-                                icon={<LogoutOutlined />}>
-                                Log out
-                            </Menu.Item>
-                        </Menu>
+                    <Col span={24} className='flex items-end'>
+                        <Space className='px-3 py-3' wrap>
+                            <Badge
+                                className=''
+                                offset={[-7, 32]}
+                                size='large'
+                                color='green'
+                                dot>
+                                <Avatar src={AvatarImg} size='large' />
+                            </Badge>
+                            <Space wrap direction='vertical' size={'small'}>
+                                <Text className='text-white text-xs'>
+                                    Lucy Lavender
+                                </Text>
+                                <Text className='text-white text-xs'>
+                                    {t('SIDE_BAR.UX_DESIGNER')}
+                                </Text>
+                            </Space>
+                        </Space>
                     </Col>
                 </Row>
             </Sider>

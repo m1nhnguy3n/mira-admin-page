@@ -1,17 +1,12 @@
 import { ConfigProvider } from 'antd';
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './config/i18n';
-import AuthProvider from './context/AuthContext.jsx';;
+import AuthProvider from './context/AuthContext.jsx';
 import './index.css';
 import Routes from './router.jsx';
-
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
-    
-        <AuthProvider>
+    <AuthProvider>
         <ConfigProvider
             theme={{
                 components: {
@@ -22,7 +17,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                         darkSubMenuItemBg: '#233044',
                     },
                     Drawer: {
-                        paddingLG: '0',
+                        paddingLG: 0,
+                    },
+                    Popover: {
+                        sizePopupArrow: 0,
                     },
                 },
             }}>
@@ -30,7 +28,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Routes />
             </I18nextProvider>
         </ConfigProvider>
-        </AuthProvider>
-        
-    
+    </AuthProvider>
 );
